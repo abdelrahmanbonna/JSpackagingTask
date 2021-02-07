@@ -1,19 +1,26 @@
 body {
-    background-color: crimson;
+    background-color: darkgray;
 
     p {
-        background-color: azure;
-        color: red;
+        background-color: whitesmoke;
+        color: darkolivegreen;
+        border-radius: -15%;
+        padding: 2%;
+
     }
 
 
     img {
-        width: 200xp;
-        height: 200px;
+        margin: auto;
+        object-fit: cover;
+        width: 1000px;
+        height: 300px;
     }
 
 }
 
 div {
-    color: yellowgreen;
+    background-color: yellowgreen;
+    width: 1000px;
+    height: 300px;
 }
