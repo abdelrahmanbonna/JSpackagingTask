@@ -8,14 +8,16 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 module.exports = {
     entry: pathPackage.resolve(__dirname, './src/index.js'),
     output: {
-        filename: 'script.bundle.js'
-        , path: pathPackage.resolve(__dirname, './dist')
+        filename: 'bundle.js'
+        , path: pathPackage.resolve(__dirname, './build')
     },
     mode: 'development',
     devtool: 'inline-source-map',
     module: {
         rules: [
+
             { test: /\.css$/i, use: [MiniCssExtractPlugin.loader, 'css-loader'] }
+
             ,{
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 use: [{
@@ -28,7 +30,7 @@ module.exports = {
                     {
                       loader: ImageMinimizerPlugin.loader,
                       options: {
-                        severityError: 'warning',
+                        severityError: 'warning', 
                         minimizerOptions: {
                           plugins: ['gifsicle',['mozjpeg', { quality: 60 }],'svgo','optipng']
                         },
@@ -40,14 +42,13 @@ module.exports = {
         ]
     }
     , plugins: [
-        new HtmlWebpackPlugin({ title:'output',filename:'index.html', inject: 'body' }),
+        new HtmlWebpackPlugin({ title:'Testing Web Pack',filename:'index.html', inject: 'body' }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
     ],
   optimization: {
     minimize: true,
     minimizer: [
-      `...`,
       new TerserPlugin({
         terserOptions: {
             format: {
